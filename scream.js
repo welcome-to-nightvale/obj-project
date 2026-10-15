@@ -15,6 +15,10 @@ const students = [
   { name: "Dakota",  grade: 10, gpa: 3.9, isHonors: true  }
 ];
 
-function findByName(students, name) {
-    if ()
+function findByName(students, targetName) {
+    const e = students.find((student) => student[] === targetName);
+    console.log(e);
+    //e == Object? console.log(e) : console.log("null");
+
 }
+findByName(students, "ChenZee");
