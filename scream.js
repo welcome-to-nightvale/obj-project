@@ -15,10 +15,42 @@ const students = [
   { name: "Dakota",  grade: 10, gpa: 3.9, isHonors: true  }
 ];
 
-function findByName(students, targetName) {
-    const e = students.find((student) => student[] === targetName);
-    console.log(e);
-    //e == Object? console.log(e) : console.log("null");
+/* function findByName(students, targetName) {
+    console.log(students[0]);
+    students.find((student) => student.name === targetName || null);
+}; */
+//findByName(students, "ChenZee");
 
+function printRoster(students) {
+    function star(isHonors) {
+        if (isHonors === true) {
+            return " *";
+        } else {
+            return "";
+        }
+    };
+    students.forEach((student) => console.log("[grade: "+student.grade+"] "+ student.name+"- "+"GPA: "+ student.gpa+star(student.isHonors)))
+};
+printRoster(students);
+students.push({
+    name: "ella",
+    grade: "10",
+    gpa: 40000.0,
+    isHonors: true
+});
+printRoster(students);
+
+/* function inspectObject(obj) {
+    Object.entries(obj).forEach(([key, value]) => console.log(key+" -> "+value));
+};
+inspectObject(students[0]); */
+
+/* const scores = { math: 92, english: 85, history: 78, name: "Alex" };
+
+function sumValues(obj) {
+    let total = 0;
+    Object.values(obj).forEach((val) => typeof val === "number"? total += val : total += 0);
+    console.log(total);
 }
-findByName(students, "ChenZee");
+
+sumValues(scores); */
