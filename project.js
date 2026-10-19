@@ -21,7 +21,7 @@ const items = [
     },
     { name: "orb",
       desc: "On Friday, we will be peering into Orbs and Spheres",
-      tags: ["for divninging esoteric truths", "The Eye"],
+      tags: ["for divining esoteric truths", "The Eye"],
       price: 10000000.00
     },
     { name: "Coconut husk fragment",
@@ -46,7 +46,7 @@ const items = [
     },
     { name: "Wizard hat",
       desc: "bugs under there",
-      tags: ["for divninging esoteric truths", "accessory", "The Spiral"],
+      tags: ["for divining esoteric truths", "accessory", "The Spiral"],
       price: 42.68
     },
     { name: "whiteboard magnet",
@@ -61,7 +61,7 @@ const items = [
     },
     { name: "Forbidden Scripture",
       desc: "remnants of a peculiar elementary schooler's writing journal. \nMarble notebook",
-      tags: ["for divninging esoteric truths", "brings misery", "not for sale"],
+      tags: ["for divining esoteric truths", "brings misery", "not for sale"],
       price: 15.01
     },
     { name: "Vase",
@@ -114,9 +114,29 @@ function filter(tag) {
   console.log(filtered);
 }
 
+function filterBy(type, order) {
+  switch (type) {
+    case "price":
+      if (order === "highest") {
+
+      }
+      
+      break;
+    case "alphabetical":
+      break;
+    case "category":
+      filter(order);
+      break;
+
+  }
+}
+
 filter("brings joy");
 
 function addToCart(item) {
   cart.push(item);
-}
+  console.log(cart);
+};
+
+
 
