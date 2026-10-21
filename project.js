@@ -122,6 +122,7 @@ const items = [
 ]
 
 let cart = {};
+let cartTotal = 0;
 
 function filterBy(tag) {
   let filtered = [];
@@ -139,10 +140,12 @@ function addToCart(item) {
     if (cart[item.name]) {
       cart[item.name].qty ++;
       cart[item.name].stock --;
+      cartTotal += cart[item.name].price;
     } else {
       cart[item.name] = item;
       cart[item.name].qty = 1;
       cart[item.name].stock --;
+      cartTotal += cart[item.name].price;
     }
   } else {
     console.log("item not in stock");
@@ -153,18 +156,20 @@ function removeFromCart(item){
   if (cart[item.name].qty > 1) {
     cart[item.name].qty --;
     cart[item.name].stock ++;
+    cartTotal -= cart[item.name].price;
   } else {
     cart[item.name].qty --;
     cart[item.name].stock ++;
+    cartTotal += cart[item.name].price;
     delete cart[item.name];
   }
 }
 
-function calcTotal(cart) {
+/* function calcTotal(cart) {
   let total = 0;
   Object.values(cart).forEach((item)=> total += cart[item.name].price * cart[item.name].qty);
   return total;
-};
+}; */
 
 function discount(code, total) {
   if (code === "iHeartAPCS") {
@@ -191,7 +196,7 @@ addToCart(items[2]);
 
 //removeFromCart(items[0]);
 console.log(cart);
-console.log(calcTotal(cart));
-console.log(discount("iHeartAPCS", calcTotal(cart)))
+console.log(cartTotal);
+console.log(discount("iHeartAPCS", cartTotal))
 
 
