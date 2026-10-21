@@ -1,8 +1,8 @@
 const items = [
     { name: "Jar",
       desc: "contains rocks",
-      tags: ["decorative", "brings joy", "The Buried"],
-      stock: 1,
+      tags: ["decorative", "brings joy"],
+      stock: 2,
       price: 20.00
     },
     { name: "Paper Crane",
@@ -13,31 +13,31 @@ const items = [
     },
     { name: "Wasps' nest",
       desc: "perhaps it can soothe my itching soul",
-      tags: ["brings joy", "potentially mind controlling","companion", "The Corruption"],
+      tags: ["brings joy", "potentially mind controlling","companion"],
       stock: 1,
       price: 329.99
     },
     { name: "Fish Lamp",
       desc: "Radiates malice and hatred",
-      tags: ["decorative", "brings misery", "The Desolation"],
+      tags: ["decorative", "brings misery"],
       stock: 1,
       price: 32.23
     },
     { name: "orb",
       desc: "On Friday, we will be peering into Orbs and Spheres",
-      tags: ["for divining esoteric truths", "The Eye"],
+      tags: ["for divining esoteric truths"],
       stock: 1,
       price: 10000000.00
     },
     { name: "Coconut husk fragment",
       desc: "from that one time vicky brought a coconut to gym",
-      tags: ["decorative", "The Hunt"],
+      tags: ["decorative"],
       stock: 1,
       price: 3.00
     },
     { name: "Harmonica",
       desc: "play some tunes",
-      tags: ["brings joy", "The Slaughter"],
+      tags: ["brings joy"],
       stock: 1,
       price: 25.55
     },
@@ -49,13 +49,13 @@ const items = [
     },
     { name: "James the Greater",
       desc: "taxidermied pufferfish",
-      tags: ["companion", "The Stranger"],
+      tags: ["companion"],
       stock: 1,
       price: 16.00
     },
     { name: "Wizard hat",
       desc: "bugs under there",
-      tags: ["for divining esoteric truths", "accessory", "The Spiral"],
+      tags: ["for divining esoteric truths", "accessory"],
       stock: 1,
       price: 42.68
     },
@@ -67,7 +67,7 @@ const items = [
     },
     { name: "NYC Public Transit seating",
       desc: "build your very own basement train",
-      tags: ["The Buried"],
+      tags: ["decorative"],
       stock: 1,
       price: 200
     },
@@ -79,13 +79,13 @@ const items = [
     },
     { name: "Vase",
       desc: "vase that gaslights you. \nprice is only a little bit unreasonable",
-      tags: ["The Spiral"],
+      tags: ["brings misery"],
       stock: 1,
       price: 67000.67
     },
     { name: "Casette Tape",
       desc: "perhaps it contains a statement",
-      tags: ["The Web", "The Eye"],
+      tags: ["brings joy"],
       stock: 1,
       price: 19.99
     },
@@ -103,19 +103,19 @@ const items = [
     },
     { name: "Mold that makes you love Mold",
       desc: "put this in your House put this under your Bed",
-      tags: ["potentially mind controlling", "companion", "The Corruption"],
+      tags: ["potentially mind controlling", "companion"],
       stock: 1,
       price: 0
     },
     { name: "Big Mouth Billy Bass",
       desc: "reprogrammed to now only sing La Carmagnole",
-      tags: ["decorative", "brings joy", "The Hunt"],
+      tags: ["decorative", "brings joy"],
       stock: 1,
       price: 73.99
     },
     { name: "Cursed Amulet",
       desc: "put this in your House put this under your Bed",
-      tags: ["potentially mind controlling", "accessory", "The Web"],
+      tags: ["potentially mind controlling", "accessory"],
       stock: 1,
       price: 0
     },
@@ -135,32 +135,63 @@ function filterBy(tag) {
 };
 
 function addToCart(item) {
-  if (cart[item.name]) {
-    cart[item.name].qty ++;
-    cart[item.name].stock --;
+  if (item.stock > 0) {
+    if (cart[item.name]) {
+      cart[item.name].qty ++;
+      cart[item.name].stock --;
+    } else {
+      cart[item.name] = item;
+      cart[item.name].qty = 1;
+      cart[item.name].stock --;
+    }
   } else {
-    cart[item.name] = item;
-    cart[item.name].qty = 1;
-    cart[item.name].stock --;
+    console.log("item not in stock");
   }
 };
 
+function removeFromCart(item){
+  if (cart[item.name].qty > 1) {
+    cart[item.name].qty --;
+    cart[item.name].stock ++;
+  } else {
+    cart[item.name].qty --;
+    cart[item.name].stock ++;
+    delete cart[item.name];
+  }
+}
+
 function calcTotal(cart) {
   let total = 0;
-  cart.forEach((item)=> total += cart[item.name].price);
+  Object.values(cart).forEach((item)=> total += cart[item.name].price * cart[item.name].qty);
   return total;
 };
 
+function discount(code, total) {
+  if (code === "iHeartAPCS") {
+    return total * 0.50;
+  } else if (code === "discountCode") {
+    return total * 0.80;
+  } else if (code === "darknessAndDespair") {
+    return total * 0.70;
+  } else {
+    return "invalid code";
+  }
+}
 
-/* addToCart(items[0]);
-addToCart(items[1]);
-addToCart(items[2]);
 
-console.log(calcTotal(cart)); */
 
-//console.log(items["Jar"])
+
 
 addToCart(items[0]);
+addToCart(items[0]);
+//addToCart(items[0]);
+addToCart(items[4]);
+addToCart(items[2]);
+//console.log(cart);
+
+//removeFromCart(items[0]);
 console.log(cart);
+console.log(calcTotal(cart));
+console.log(discount("iHeartAPCS", calcTotal(cart)))
 
 
