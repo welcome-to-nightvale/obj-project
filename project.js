@@ -173,19 +173,15 @@ function removeFromCart(item){
 
 function discount(code, total) {
   if (code === "iHeartAPCS") {
-    return total * 0.50;
+    return (total * 0.50).toFixed(2);
   } else if (code === "discountCode") {
-    return total * 0.80;
+    return (total * 0.80).toFixed(2);
   } else if (code === "darknessAndDespair") {
-    return total * 0.70;
+    return (total * 0.70).toFixed(2);
   } else {
     return "invalid code";
   }
 }
-
-
-
-
 
 addToCart(items[0]);
 addToCart(items[0]);
