@@ -77,9 +77,9 @@ const items = [
       stock: 1,
       price: 15.01
     },
-    { name: "Vase",
-      desc: "vase that gaslights you. \nprice is only a little bit unreasonable",
-      tags: ["brings misery"],
+    { name: "wooden boat",
+      desc: "carved haphazardly with a box cutter",
+      tags: ["brings joy"],
       stock: 1,
       price: 67000.67
     },
