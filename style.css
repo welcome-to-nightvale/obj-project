@@ -7,6 +7,8 @@ html,body,*{
 
 body{
     background-color: #432c3c;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCD48XQ6PvKXBJCT62Sy1dxrVdbtF-w3Kw7m3cQmNn2A&s=10');
+    background-size: 100%;
 }
 /* 
 div {
