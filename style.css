@@ -7,8 +7,9 @@ html,body,*{
 
 body{
     background-color: #432c3c;
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCD48XQ6PvKXBJCT62Sy1dxrVdbtF-w3Kw7m3cQmNn2A&s=10');
+    /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCD48XQ6PvKXBJCT62Sy1dxrVdbtF-w3Kw7m3cQmNn2A&s=10'); */
     background-size: 100%;
+    align-items: center;
 }
 /* 
 div {
@@ -29,18 +30,52 @@ div {
 }
 
 .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     height: 40rem;
     width: 30rem;
     background-color: #b64941;
-    margin: 2rem 1.5rem;
-    padding: 1rem;
+    /* padding: 1rem; */
+    margin: auto;
     border-radius: 4px;
+    align-items: center;
 }
 .card-title{
     font-size: 20;
     font-weight:600;
     margin: 0;
     text-align: center;
+    font-family: "Creepster", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+.card-image {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+}
+.card p{
+    font-size: 12;
+    font-weight:600;
+    margin: auto;
+}
+
+.card-button{
+    padding: 0.8rem;
+    height: 3.5rem;
+    background-color: #432c3c;
+    color: #ffffff;
+    border: 1px solid 0.5rem;
+    border-color: #2c1c2c;
+    font-size: 1.4rem;
+    font-weight: 600px;
+    cursor: pointer;
+    margin: 1rem;
+}
+
+.card-btn:hover {
+    background-color: bisque;
 }
 
 /* #test{
